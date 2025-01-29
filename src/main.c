@@ -24,18 +24,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <unistd.h>
-#include <string.h>
 
-#include "player.h"
 #include "mostri.h"
+#include "player.h"
 #include "util.h"
 
 #define PW_AUTH "master"
 
 
-void menu_stampa_classifica(struct giocatore** avventuriero, classifica classifica){
+void menu_stampa_classifica(struct giocatore** avventuriero, classifica classifica)
+{
 	system("clear");
 
 	printf_centro(120, 0, "Classifica");
@@ -45,7 +46,8 @@ void menu_stampa_classifica(struct giocatore** avventuriero, classifica classifi
 }
 
 
-int cleanup(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura){
+int cleanup(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura)
+{
 	char ctitolo_avventura[21];
 
 	salva_classifica(classifica);
@@ -83,7 +85,8 @@ int cleanup(struct giocatore** avventuriero, queue coda_mostri, classifica class
 }
 
 
-int menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura){
+int menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura)
+{
 	char password[21];
 	int scelta = -1; 
 	int scelta_2 = -1;
@@ -180,7 +183,8 @@ int menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica c
 
 
 
-int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, classifica classifica){
+int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, classifica classifica)
+{
 	int azione = 0;
 	int flag_titolo = 0;
 
@@ -697,7 +701,8 @@ int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri
 }
 
 
-int crea_personaggio(struct giocatore** avventuriero){
+int crea_personaggio(struct giocatore** avventuriero)
+{
 	char nome_personaggio[21];
 	char password[21];
 	char nome_classe_personaggio[21], nome_arma_personaggio[21];
@@ -764,7 +769,8 @@ int crea_personaggio(struct giocatore** avventuriero){
 	return 0;
 }
 
-int menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, classifica classifica){
+int menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, classifica classifica)
+{
 	int scelta = -1;
 	
 	while(scelta != 99){
@@ -809,7 +815,8 @@ int menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struct
 	return 0;
 }
 
-int pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, struct classifica** classifica){
+int pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struct avventura** avventura, struct classifica** classifica)
+{
 	char nome_player[21];
 	char password[21];
 	int opzione = -1;
@@ -893,7 +900,8 @@ int pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, st
 	return 0;
 }
 
-int menu_principale(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura){
+int menu_principale(struct giocatore** avventuriero, queue coda_mostri, classifica classifica, struct avventura** avventura)
+{
 	int scelta = -1;
 	int iRetMenu_Master = 0;
 
@@ -931,43 +939,40 @@ int menu_principale(struct giocatore** avventuriero, queue coda_mostri, classifi
 				system("clear");
 		}
 	}
-	printf("Chiusura del gioco in corso...");
+	printf("Chiusura del gioco in corso...\n");
 	sleep(3);
 
 	return 0;
 }
 
+void controllo_malloc(void* address)
+{
+	if(address == NULL){
+		fprintf(stderr, "[\033[0;31mERRORE\033[0m] La Memoria RAM e' Insufficiente\n");
+		exit(1);
+	}
+}
 
-int main(){
+int main(void)
+{
 	char ctitolo_avventura[21];
 	int iRet_LoadAvventura = -2;
 	system("clear");
 	srand(time(NULL));
 
 	struct giocatore* avventuriero = crea_lista_personaggi();
-	if(avventuriero == NULL){
-		printf("[\033[0;31mATTENZIONE\033[0m] La Memoria RAM e' Insufficiente\n");
-		exit(-1);
-	}
+	controllo_malloc(avventuriero);
 
 	struct classifica* classifica = crea_classifica();
-	if(classifica == NULL){
-		printf("[\033[0;31mATTENZIONE\033[0m] La Memoria RAM e' Insufficiente\n");
-		exit(-1);
-	}
+	controllo_malloc(classifica);
 
 	queue coda_mostri = crea_coda_mostri();
-	if(coda_mostri == NULL){
-		printf("[\033[0;31mATTENZIONE\033[0m] La Memoria RAM e' Insufficiente\n");
-		exit(-1);
-	}
+	controllo_malloc(coda_mostri);
 
 	struct avventura* avventura = (struct avventura*)malloc(sizeof(struct avventura));
+	controllo_malloc(avventura);
+	
 	inserisci_titolo_avventura(&avventura, "NULL");
-	if(avventura == NULL){
-		printf("[\033[0;31mATTENZIONE\033[0m] La Memoria RAM e' Insufficiente\n");
-		exit(-1);
-	}
 	
 	iRet_LoadAvventura = carica_avventura_file(coda_mostri, ctitolo_avventura);
 	if(iRet_LoadAvventura == 0)
