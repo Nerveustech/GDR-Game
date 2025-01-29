@@ -1,2 +1,11 @@
 # GDR-Game
-university project concerning c and data structures, this project will continue to be developed.
+University exam regarding the design and implementation of a software written in C language with data structures.
+
+# Build & Run
+```console
+mkdir build
+cd build
+cmake ..
+cmake --build . --parallel
+./game
+```
