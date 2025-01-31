@@ -25,40 +25,34 @@
 #include "util.h"
 
 
-int lancio_d4(){
-	int numero;
-	int minore = 1;
-	int maggiore = 4;
-	
-	numero = (rand() % ( maggiore - minore + 1)) + minore;
-	return numero;
+short lancio_d4()
+{
+	short minore = 1, maggiore = 4;
+	return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-int lancio_d6(){
-	int numero;
-	int minore = 1;
-	int maggiore = 6;
-
-	numero = (rand() % ( maggiore - minore + 1)) + minore;
- 	return numero;
+short lancio_d6()
+{
+	short minore = 1, maggiore = 6;
+	return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-int lancio_d8(){
-	int numero;
-	int minore = 1;
-	int maggiore = 8;
-
-	numero = (rand() % ( maggiore - minore + 1)) + minore;
-	return numero;
+short lancio_d8()
+{
+	short minore = 1, maggiore = 8;
+	return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-int lancio_d20(){
-	int numero;
-	int minore = 1;
-	int maggiore = 20;
+short lancio_d12()
+{
+	short minore = 1, maggiore = 12;
+	return (rand() % ( maggiore - minore + 1)) + minore;
+}
 
-	numero = (rand() % ( maggiore - minore + 1)) + minore;
-	return numero;
+short lancio_d20()
+{
+	short minore = 1, maggiore = 20;
+	return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
 int printf_spazio(int num){
