@@ -184,3 +184,10 @@ void printf_vittoria(){
 	printf("					            ╫╣╣▒▒░░░░▒▒╫▓▓▓▓U\n");
 }
 
+void controllo_malloc(void* address)
+{
+	if(address == NULL){
+		fprintf(stderr, "[\033[0;31mERRORE\033[0m] La Memoria RAM e' Insufficiente\n");
+		exit(1);
+	}
+}

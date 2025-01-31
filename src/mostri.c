@@ -123,14 +123,14 @@ int salva_avventura(queue coda, char* titolo_avventura){
 }
 
 
-int carica_avventura_file(queue coda, char* titolo_avventura){
+bool carica_avventura_file(queue coda, char* titolo_avventura){
 	char nome_mostro[21];
 	char ctitolo_avventura[21];
 	int punti_vita = 0, armatura = 0, exp = 0, livello = 0, punti_avventura = 0;
 	
 	FILE* fpCoda;
 	fpCoda = fopen("Avventura.txt","r");
-	if(fpCoda == NULL) return -1;
+	if(fpCoda == NULL) return false;
 
 	fscanf(fpCoda, "%s\n", ctitolo_avventura);
 	strcpy(titolo_avventura, ctitolo_avventura);
@@ -140,7 +140,10 @@ int carica_avventura_file(queue coda, char* titolo_avventura){
 		inserisci_mostro(coda, nome_mostro, punti_vita, armatura, exp, livello, punti_avventura);
 	}
 	fclose(fpCoda);
-	system("rm -rf Avventura.txt");
+	
+	if(remove("Avventura.txt") != 0){
+		return false;
+	}
 
-	return 0;
+	return true;
 }

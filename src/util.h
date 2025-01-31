@@ -47,4 +47,6 @@ void printf_sconfitta();
 void printf_banner_combat();
 void printf_vittoria();
 
+void controllo_malloc(void* address);
+
 #endif
