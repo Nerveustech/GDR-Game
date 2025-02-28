@@ -32,49 +32,49 @@
 
 enum iRet_Player_def
 {
-	SUCCESSO = 0, //SUCCESSO GENERALE
-	ERRORE_AVV_VUOTO = 1,
-	ERRORE_GENERICO = -1,
-	ERRORE_MALLOC = -2, //ERRORE NELLA MALLOC
-	MAGIC_ERROR = -9, //ERRORE MAGICO
-	PG_NOT_FOUND  = 2
+    SUCCESSO = 0, //SUCCESSO GENERALE
+    ERRORE_AVV_VUOTO = 1,
+    ERRORE_GENERICO = -1,
+    ERRORE_MALLOC = -2, //ERRORE NELLA MALLOC
+    MAGIC_ERROR = -9, //ERRORE MAGICO
+    PG_NOT_FOUND  = 2
 };
 
 //struttura giocatore
 struct giocatore{
-	char password[21];
-	char nome_player[21];
-	char nome_classe[11];
-	char nome_arma[21];
-	int danno_arma;
-	int punti_ferita;
-	int armatura;
-	int exp, livello;
-	int punti_avventura;
-	int avventure_completate;
+    char password[21];
+    char nome_player[21];
+    char nome_classe[11];
+    char nome_arma[21];
+    int danno_arma;
+    int punti_ferita;
+    int armatura;
+    int exp, livello;
+    int punti_avventura;
+    int avventure_completate;
 
-	struct giocatore* next;
+    struct giocatore* next;
 };
 
 struct nodo{
-	char nome_giocatore[21];
-	char classe_giocatore[21];
-	int avventure_svolte;
-	int punti_avventura;
+    char nome_giocatore[21];
+    char classe_giocatore[21];
+    int avventure_svolte;
+    int punti_avventura;
 
-	struct nodo* next;
-	struct nodo* prec;	
+    struct nodo* next;
+    struct nodo* prec;	
 };
 
 struct classifica{
-	struct nodo* testa;
-	struct nodo* coda;
+    struct nodo* testa;
+    struct nodo* coda;
 };
 
 typedef struct classifica** classifica;
 
 struct avventura{
-	char titolo[21];
+    char titolo[21];
 };
 
 int crea_avventura(queue coda_mostri, struct avventura** avventura, struct giocatore** avventuriero, classifica classifica);

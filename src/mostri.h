@@ -31,17 +31,17 @@
 #include <string.h>
 
 struct mostri{
-	char nome_mostro[21];
-	int punti_vita;
-	int armatura;
-	int exp, livello;
-	int punti_avventura;
-	struct mostri* next;
+    char nome_mostro[21];
+    int punti_vita;
+    int armatura;
+    int exp, livello;
+    int punti_avventura;
+    struct mostri* next;
 };
 
 struct queue{
-	struct mostri* head;
-	struct mostri* tail;
+    struct mostri* head;
+    struct mostri* tail;
 };
 
 typedef struct queue* queue;
