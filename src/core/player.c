@@ -146,7 +146,7 @@ int login(struct giocatore** avventuriero, char* password){
 int stampa_giocatori_sistema(struct giocatore** avventuriero){
     if(is_empty(avventuriero) == 1) return 2;
 
-    //system("clear");
+    //clear_screen();
     printf_centro(120, 1, "Giocatori/Personaggi Presenti Nel Sistema:\n");
 
     while(avventuriero != NULL){
@@ -275,7 +275,7 @@ int ricerca_player(classifica classifica, char* parametro_nome_player){
     if(is_empty_classifica(classifica) == 1){ 
         printf_centro(120, 0, "[\033[0;31mATTENZIONE\033[0m] Classifica Non Presente!!!");
         sleep(3);
-        system("clear");
+        clear_screen();
         return 2;
     }
     
@@ -284,19 +284,19 @@ int ricerca_player(classifica classifica, char* parametro_nome_player){
     }
 
     if(strcmp((*classifica)->testa->nome_giocatore, parametro_nome_player) == 0){
-        system("clear");
+        clear_screen();
         printf_centro(120, 1, "Personaggio Trovato!\n");
         printf("Nome: %s \n", (*classifica)->testa->nome_giocatore);
         printf("Avventure: %d \n", (*classifica)->testa->avventure_svolte);
         printf("Punti Avventura: %d \n", (*classifica)->testa->punti_avventura);
         sleep(3);
-        system("clear");
+        clear_screen();
         return 0;
     }
     else{
         printf("Personaggio Non Trovato!\n");
         sleep(3);
-        system("clear");
+        clear_screen();
         return 1;
     }
 }
@@ -401,7 +401,7 @@ int crea_avventura(queue coda_mostri, struct avventura** avventura, struct gioca
     char titolo_avventura[21];
     int mostro_scelto = -1;
 
-    system("clear");
+    clear_screen();
 
     printf_centro(120, 0, "Menu Creazione Avventura");
     printf_spazio(3);
@@ -412,7 +412,7 @@ int crea_avventura(queue coda_mostri, struct avventura** avventura, struct gioca
     strcpy((*avventura)->titolo, titolo_avventura);
 
     while(mostro_scelto != 99 || mostro_scelto != 0){
-        system("clear");
+        clear_screen();
         printf_centro(120, 0, "Menu Mostri");
         printf_spazio(2);
         printf_mostri();
@@ -530,7 +530,7 @@ int crea_avventura(queue coda_mostri, struct avventura** avventura, struct gioca
             char nome_mostro_custom[21];
             int vita_mostro_custom, armatura_mostro_custom, exp_mostro_custom, punti_avventura_mostro_custom, livello_mostro_custom;
 
-            system("clear");
+            clear_screen();
             printf("Inserire Il Nome del Mostro:\n");
             fgets(nome_mostro_custom, sizeof(nome_mostro_custom), stdin);
             fgets(nome_mostro_custom, sizeof(nome_mostro_custom), stdin);

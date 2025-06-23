@@ -50,5 +50,6 @@ void printf_banner_combat();
 void printf_vittoria();
 
 void controllo_malloc(void* address);
+void clear_screen(void);/* https://github.com/Nerveustech/Libs/blob/main/LibC/LibTerminal/LibTerminal.c */
 
 #endif

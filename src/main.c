@@ -24,7 +24,6 @@
 
 /*
     Convertire tutti gli int in bool
-    Rendere system("clear") cross-platform con Windows
 */
 
 #include <stdbool.h>
@@ -43,7 +42,7 @@
 
 void menu_stampa_classifica(classifica classifica)
 {
-    system("clear");
+    clear_screen();
 
     printf_centro(120, 0, "Classifica");
     printf_spazio(2);
@@ -58,7 +57,7 @@ void menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica 
     char password[21] = {0};
     int scelta = 0;
 
-    system("clear");
+    clear_screen();
     printf_centro(120, 0, "Benvenuto Master");
     printf_centro(120, 0, "Inserire la password:");
 
@@ -72,7 +71,7 @@ void menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica 
     }
 
     while(scelta != 4){
-        system("clear");
+        clear_screen();
         
         printf_centro(120, 0, "Funzioni Disponibili:");
         printf("\n");
@@ -98,7 +97,7 @@ void menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica 
             
             case 3:
                 while (scelta != 4){
-                    system("clear");
+                    clear_screen();
                     printf_centro(120,0, ".:: Menu ::.");
                     printf("\n");
                     printf_centro(120,0, "1. Mostra Giocatori");
@@ -146,7 +145,7 @@ void menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica 
                             if(scelta != 0){
                                 printf("[\033[0;31mATTENZIONE\033[0m] Scelta non supportata\n");
                                 sleep(3);
-                                system("clear");
+                                clear_screen();
                             }
                     }
                 }
@@ -162,7 +161,7 @@ void menu_master(struct giocatore** avventuriero, queue coda_mostri, classifica 
                 if(scelta != 0){
                     printf("[\033[0;31mATTENZIONE\033[0m] Scelta non supportata\n");
                     sleep(3);
-                    system("clear");
+                    clear_screen();
                 }
         }
     }
@@ -228,7 +227,7 @@ int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri
             flag_titolo++;
             printf_spazio(3);
             sleep(5);
-            system("clear");
+            clear_screen();
         }
         
         if((punti_vita_mostro <= 0) && is_empty_queue(coda_mostri) == 1){
@@ -248,7 +247,7 @@ int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri
             inserisci_punti_classifica(avventuriero, classifica);
             insersci_avventura_classifica(classifica);
             sleep(5);
-            system("clear");
+            clear_screen();
             return 0;
         }
 
@@ -278,7 +277,7 @@ int interfaccia_combattimento(struct giocatore** avventuriero, queue coda_mostri
 
         }
 
-        system("clear");
+        clear_screen();
         printf_banner_combat();
         printf_spazio(2);
         printf("		 ___________________________________________________________________________________\n");
@@ -697,7 +696,7 @@ bool crea_personaggio(struct giocatore** avventuriero)
     int classe = 0, punti_ferita_personaggio = 0, armatura_personaggio = 0;
 
 
-    system("clear");
+    clear_screen();
     printf_centro(120, 0, "Creazione Personaggio");
     printf("\n");
     printf("Inserisci Il Nickname:\n");
@@ -708,7 +707,7 @@ bool crea_personaggio(struct giocatore** avventuriero)
     /*if(cerca_personaggio(avventuriero, nome_personaggio) == 0){
         printf("[\033[0;31mATTENZIONE\033[0m] Personaggio Gia' Esistente.\n");
         sleep(3);
-        //system("clear");
+        //clear_screen();
         return false;
     }*/
     
@@ -765,7 +764,7 @@ void menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struc
     while(scelta != 99){
         char nome_personaggio[21] = {0};
         get_nome_player(avventuriero, nome_personaggio);
-        system("clear");
+        clear_screen();
 
         printf_centro(119, 1, "Benvenuto ");
         printf("%s\n", nome_personaggio);
@@ -781,7 +780,7 @@ void menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struc
         switch(scelta){
             case 1:
                 if(is_empty_queue(coda_mostri) == 1){
-                    system("clear");
+                    clear_screen();
                     printf_centro(120, 1, "Nessuna Avventura Disponibile\n");
                     sleep(5);
                     scelta = 0;
@@ -805,7 +804,7 @@ void menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, struc
                 if(scelta != 0){
                     printf("[\033[0;31mATTENZIONE\033[0m] Scelta non supportata\n");
                     sleep(3);
-                    system("clear");
+                    clear_screen();
                 }
         }
     }
@@ -820,7 +819,7 @@ void pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, s
     int flag_pw_errata = 0;
 
     while(opzione != 3){
-        system("clear");
+        clear_screen();
         printf_centro(120, 0, "Benvenuto Avventuriero");
         printf("\n");
         printf_centro(120, 0, "[1] Continua Con Un Personaggio gia esistente");
@@ -834,7 +833,7 @@ void pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, s
 
         switch(opzione){
             case 1:
-                system("clear");
+                clear_screen();
                 printf("Inserisci Il Nome Del Personaggio:\n");
                 fgets(nome_player, sizeof(nome_player), stdin);
                 nome_player[strcspn(nome_player, "\n")] = 0;
@@ -895,7 +894,7 @@ void pre_menu_avventuriero(struct giocatore** avventuriero, queue coda_mostri, s
                 if(opzione != 0){
                     printf("[\033[0;31mATTENZIONE\033[0m] Scelta non supportata\n");
                     sleep(3);
-                    system("clear");
+                    clear_screen();
                 }
         }
 
@@ -908,7 +907,7 @@ void menu_principale(struct giocatore** avventuriero, queue coda_mostri, classif
     int scelta = 0;
 
     while(scelta != 3){
-        system("clear");
+        clear_screen();
         printf_spazio(2);
         print_banner();
         printf_spazio(3);
@@ -943,7 +942,7 @@ void menu_principale(struct giocatore** avventuriero, queue coda_mostri, classif
                 if(scelta != 0){
                     printf("[\033[0;31mATTENZIONE\033[0m] Scelta non supportata\n");
                     sleep(3);
-                    system("clear");
+                    clear_screen();
                 }
         }
     }
@@ -1001,7 +1000,7 @@ int main(void)
 {
     char titolo_avventura[21] = {0};
     
-    system("clear");
+    clear_screen();
     srand(time(NULL));
 
     struct giocatore* avventuriero = crea_lista_personaggi();

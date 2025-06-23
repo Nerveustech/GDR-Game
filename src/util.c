@@ -185,3 +185,40 @@ void controllo_malloc(void* address)
         exit(1);
     }
 }
+
+void clear_screen(void)
+{
+#ifdef __linux__
+    printf("\033[H\033[2J");
+    printf("\033[H\033[3J");
+#elif defined(WIN64) || defined(_WIN64) || defined(__MINGW64__) || defined(WIN32) || defined(_WIN32) || defined(__MINGW32__)
+    PCWSTR clear_window = L"\x1b[H\x1b[2J";
+    PCWSTR clear_scroll_back = L"\x1b[H\x1b[3J";
+
+    __windows_console_helper(clear_window);
+    __windows_console_helper(clear_scroll_back);
+#endif
+}
+
+#ifdef __WIN32
+int __windows_console_helper(PCWSTR escape_code){
+
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    DWORD mode = 0;
+    if(!GetConsoleMode(hConsole, &mode)){ return 1; }
+
+    const DWORD default_mode = mode;
+    mode |= ENABLE_VIRTUAL_TERMINAL_PROCESSING;
+
+    if(!SetConsoleMode(hConsole, mode)){ return 1; }
+
+    if(!WriteConsoleW(hConsole, escape_code, (DWORD)wcslen(escape_code), NULL, NULL)){
+        SetConsoleMode(hConsole, default_mode);
+        return 1;
+    }
+
+    SetConsoleMode(hConsole, default_mode);
+    return 0;
+}
+#endif
