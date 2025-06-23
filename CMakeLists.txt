@@ -34,5 +34,5 @@ set(SOURCES
 
 add_executable(gdr ${SOURCES})
 target_compile_options(gdr PRIVATE -Wall -Wextra)
-target_include_directories(gdr PRIVATE include/core)
+target_include_directories(gdr PUBLIC include/core PRIVATE src/)
 install(TARGETS gdr DESTINATION bin)
