@@ -25,31 +25,31 @@
 #include "util.h"
 
 
-short lancio_d4()
+short lancio_d4(void)
 {
     short minore = 1, maggiore = 4;
     return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-short lancio_d6()
+short lancio_d6(void)
 {
     short minore = 1, maggiore = 6;
     return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-short lancio_d8()
+short lancio_d8(void)
 {
     short minore = 1, maggiore = 8;
     return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-short lancio_d12()
+short lancio_d12(void)
 {
     short minore = 1, maggiore = 12;
     return (rand() % ( maggiore - minore + 1)) + minore;
 }
 
-short lancio_d20()
+short lancio_d20(void)
 {
     short minore = 1, maggiore = 20;
     return (rand() % ( maggiore - minore + 1)) + minore;

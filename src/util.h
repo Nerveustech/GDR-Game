@@ -31,14 +31,14 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "mostri.h"
-#include "player.h"
+#include "../include/core/mostri.h"
+#include "../include/core/player.h"
 
-short lancio_d4();
-short lancio_d6();
-short lancio_d8();
-short lancio_d12();
-short lancio_d20();
+short lancio_d4(void);
+short lancio_d6(void);
+short lancio_d8(void);
+short lancio_d12(void);
+short lancio_d20(void);
 
 
 int printf_spazio(int num);
