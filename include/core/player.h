@@ -27,7 +27,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include "util.h"
+
+#include "../../src/util.h"
 #include "mostri.h"
 
 enum iRet_Player_def

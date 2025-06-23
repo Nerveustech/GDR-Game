@@ -21,14 +21,18 @@
 #* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 #* SOFTWARE.
 
-cmake_minimum_required(VERSION 3.12...3.22)
+cmake_minimum_required(VERSION 3.22...4.0)
 
-project(Game LANGUAGES C)
+project(GDR-Game LANGUAGES C)
 
-file(GLOB_RECURSE sources src/*.c src/*.h)
+set(SOURCES
+    src/main.c
+    src/util.c
+    src/core/mostri.c
+    src/core/player.c
+)
 
-add_executable(game ${sources})
-
-target_compile_options(game PUBLIC -Wall -Wextra)
-
-target_include_directories(game PUBLIC src)
+add_executable(gdr ${SOURCES})
+target_compile_options(gdr PRIVATE -Wall -Wextra)
+target_include_directories(gdr PRIVATE include/core)
+install(TARGETS gdr DESTINATION bin)

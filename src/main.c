@@ -34,8 +34,8 @@
 #include <time.h>
 #include <unistd.h>
 
-#include "mostri.h"
-#include "player.h"
+#include "../include/core/mostri.h"
+#include "../include/core/player.h"
 #include "util.h"
 
 #define PW_AUTH "master"

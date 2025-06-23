@@ -3,9 +3,8 @@ University exam regarding the design and implementation of a software written in
 
 # Build & Run
 ```console
-mkdir build
 cd build
 cmake ..
-cmake --build . --parallel
-./game
+cmake --build . --parallel --target install --config Release
+gdr
 ```

@@ -22,7 +22,7 @@
  * SOFTWARE.
 */
 
-#include "player.h"
+#include "../../include/core/player.h"
 
 struct giocatore* crea_lista_personaggi(){
 

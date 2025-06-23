@@ -22,7 +22,7 @@
  * SOFTWARE.
 */
 
-#include "mostri.h"
+#include "../../include/core/mostri.h"
 
 queue crea_coda_mostri(){
     queue coda_mostri = (queue)malloc(sizeof(struct queue));
